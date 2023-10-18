@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ContasRosen.Models.Instituicao>
+
+@{
+    ViewData["Title"] = "Lista de Instituicões";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Listagem</h1>
+
+<p>
+    <a asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) { //item é o objeto de model
+                               // a cada objeto recebe um valor 
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoID) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.ActionLink("Editar" ,"Edit", new { id=item.InstituicaoID}) |
+                    @Html.ActionLink("Detalhes", "Details", new {id=item.InstituicaoID  }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id=item.InstituicaoID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
