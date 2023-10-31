@@ -58,13 +58,13 @@ namespace ContasRosen.Controllers
             return View(instituicoes.Where(i => i.InstituicaoID == id).First());
         }
 
-        public ActionResult Delete(long id)
+        public ActionResult Delete(long id) /*GET */
         {
             return View(instituicoes.Where(i => i.InstituicaoID == id).First());
         }
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Instituicao instituicao) /*sobrecarga */
+        public ActionResult Delete(Instituicao instituicao) /*POST */
         {
             instituicoes.Remove(instituicoes.Where(i => i.InstituicaoID == instituicao.InstituicaoID).First());
             return RedirectToAction("Index");
